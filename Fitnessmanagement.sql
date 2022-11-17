@@ -1,24 +1,24 @@
 CREATE TABLE `diet_plan` (
-  `ex_id` int(10) NOT NULL ,
+  `ex_id` varchar NOT NULL ,
   `recipe` varchar(30) DEFAULT NULL,
   `calories` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `exercise_routine` (
-  `ex_routine_id` int(10) NOT NULL,
+  `ex_routine_id` varchar NOT NULL,
   `duration` time NOT NULL,
   `calories` int(10) DEFAULT NULL,
-  `id` int(10) NOT NULL ,
-  `ex_id` int(10) NOT NULL 
+  `id` varchar NOT NULL ,
+  `ex_id` varchar NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `daily_log` (
-  `loyalty_id` int(10) NOT NULL,
+  `loyalty_id` varchar NOT NULL,
   `duration` date NOT NULL,
   `calories_burnt` int(10) DEFAULT NULL,
   `calories_consumed` int(10) DEFAULT NULL,
   `feedback` varchar(20) DEFAULT NULL,
-  `ex_routine_id` int(10) NOT NULL 
+  `ex_routine_id` varchar NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `diet_plan_recipe` (
@@ -26,24 +26,24 @@ CREATE TABLE `diet_plan_recipe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `does` (
-  `id` int(10) NOT NULL,
-  `ex_routine_id` int(10) NOT NULL
+  `id` varchar NOT NULL,
+  `ex_routine_id` varchar NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `exercise_list` (
-  `ex_id` int(10) NOT NULL ,
+  `ex_id` varchar NOT NULL ,
   `description` varchar(30) DEFAULT NULL,
   `type` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `loyal_pts` (
-  `loyalty_id` int(10) NOT NULL ,
+  `loyalty_id` varchar NOT NULL ,
   `level` int(3) NOT NULL,
   `streaks` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `user_info` (
-  `id` int(10) NOT NULL PRIMARY,
+  `id` varchar NOT NULL PRIMARY,
   `gender` varchar(1) DEFAULT NULL,
   `height` int(11) DEFAULT NULL,
   `weight` int(11) DEFAULT NULL,
@@ -53,20 +53,20 @@ CREATE TABLE `user_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `membership_type` (
-  `type_id` int(10) NOT NULL,
+  `type_id` varchar NOT NULL,
   `duration` date NOT NULL,
   `amount` decimal(10,2) NOT NULL,
-  `id` int(10) NOT NULL ,
-  `trainer_id` int(10) NOT NULL 
+  `id` varchar NOT NULL ,
+  `trainer_id` varchar NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `user_info_mail` (
-  `id` int(10) NOT NULL ,
+  `id` varchar NOT NULL ,
   `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `trainer` (
-  `trainer_id` int(10) NOT NULL PRIMARY,
+  `trainer_id` varchar NOT NULL PRIMARY,
   `phoneno` int(10) NOT NULL,
   `amount` decimal(10,2) NOT NULL,
   `name` varchar(20) NOT NULL,
