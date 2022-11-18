@@ -112,69 +112,69 @@ if __name__=='__main__':
     dataGen = dataGeneration()
     
     filename = "diet_plan.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
         csvwriter.writerow(dataGen.l1)
         csvwriter.writerows(dataGen.diet_plan(count=100,ex_routine_min=20,ex_routine_max=60,cal_min=100,cal_max=350,recipe_min=5,recipe_max=25))
 
     filename = "exercise_routine.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
         csvwriter.writerow(dataGen.l2)
         csvwriter.writerows(dataGen.exercise_routine(count=200,duration_min=30,duration_max=120,cal_min=50,cal_max=400,ex_id_min=0,ex_id_max=120))
     
     filename = "daily_log.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
         csvwriter.writerow(dataGen.l3)
         csvwriter.writerows(dataGen.daily_log(count=400,duration_min=40,duration_max=90,cal_min=90,cal_max=320,cal_consume_min=1000,cal_consume_max=2500,feedback_min=0,feedback_max=100,ex_routine_min=20,ex_routine_max=80))
 
     filename = "diet_plan_recipe.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
         csvwriter.writerow(dataGen.l4)
         csvwriter.writerows(dataGen.diet_plan_recipe(count=80))
 
     filename = "does.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
         csvwriter.writerow(dataGen.l5)
         csvwriter.writerows(dataGen.does(count=70,user_id_min=15,user_id_max=100,ex_routine_min=11,ex_routine_max=95))
 
 
     filename = "exercise_list.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
         csvwriter.writerow(dataGen.l6)
         csvwriter.writerows(dataGen.exercise_list(count=150,description_min=20,description_max=300,type_min=5,type_max=300))
 
     filename = "loyalty_pts.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
-        csvwriter.writerow(dataGen.l6)
+        csvwriter.writerow(dataGen.l7)
         csvwriter.writerows(dataGen.loyalty_pts(count=50,streaks_min=0,streaks_max=20,Level_min=1,Level_max=5,loyalty_min=30,loyalty_max=300))
 
     
     filename = "user_info.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
-        csvwriter.writerow(dataGen.l6)
+        csvwriter.writerow(dataGen.l8)
         csvwriter.writerows(dataGen.user_info(count=90,height_min=150,height_max=195,weight_min=45,weight_max=95,Fname_min=1,Fname_max=200,Mname_min=5,Mname_max=250,Lname_min=5,Lname_max=250))
 
     filename = "membership_type.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
-        csvwriter.writerow(dataGen.l6)
+        csvwriter.writerow(dataGen.l9)
         csvwriter.writerows(dataGen.membership_type(count=5,period_min=2,period_max=12,amount_min=1000,amount_max=10000,user_id_min=1,user_id_max=75,trainer_id_min=1,trainer_id_max=20))
 
     filename = "user_info_email.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
-        csvwriter.writerow(dataGen.l6)
+        csvwriter.writerow(dataGen.l10)
         csvwriter.writerows(dataGen.user_info_email(count=60,email_min=1,email_max=50,user_id_min=1,user_id_max=50))
 
     filename = "trainer.csv"
-    with open(filename,'w') as csvfile:
+    with open(filename,'w',newline='') as csvfile:
         csvwriter = csv.writer(csvfile) 
-        csvwriter.writerow(dataGen.l6)
+        csvwriter.writerow(dataGen.l11)
         csvwriter.writerows(dataGen.trainer(count=30,fee_min=1000,fee_max=10000,name_min=1,name_max=50,ph_min=1000000000,ph_max=9999999999))
