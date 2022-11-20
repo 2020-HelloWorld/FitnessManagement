@@ -1,4 +1,3 @@
-Id,Ex_routine_Id
 USR86,EX_routine43
 USR78,EX_routine68
 USR63,EX_routine82
@@ -7,14 +6,12 @@ USR81,EX_routine18
 USR15,EX_routine52
 USR19,EX_routine36
 USR68,EX_routine82
-USR96,EX_routine80
 USR51,EX_routine94
 USR44,EX_routine74
 USR87,EX_routine53
 USR15,EX_routine78
 USR23,EX_routine82
 USR22,EX_routine29
-USR95,EX_routine44
 USR52,EX_routine35
 USR49,EX_routine32
 USR60,EX_routine44
@@ -58,8 +55,6 @@ USR15,EX_routine60
 USR69,EX_routine37
 USR51,EX_routine45
 USR79,EX_routine25
-USR91,EX_routine59
-USR73,EX_routine90
 USR86,EX_routine39
 USR24,EX_routine93
 USR73,EX_routine24

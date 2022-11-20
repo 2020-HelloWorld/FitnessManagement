@@ -1,3 +1,6 @@
+CREATE DATABASE fitnessmanagement;
+USE fitnessmanagement;
+
 CREATE TABLE diet_plan (
   ex_id varchar(20) NOT NULL ,
   recipe varchar(30) DEFAULT NULL,
@@ -6,14 +9,14 @@ CREATE TABLE diet_plan (
 
 CREATE TABLE exercise_routine (
   ex_routine_id varchar(20) NOT NULL,
-  duration time NOT NULL,
+  duration int NOT NULL,
   calories int(10) DEFAULT NULL,
   ex_id varchar(20) NOT NULL 
 );
 
 CREATE TABLE daily_log (
   loyalty_id varchar(20) NOT NULL,
-  duration date NOT NULL,
+  duration int NOT NULL,
   calories_burnt int(10) DEFAULT NULL,
   calories_consumed int(10) DEFAULT NULL,
   feedback varchar(20) DEFAULT NULL,
@@ -55,7 +58,7 @@ CREATE TABLE user_info(
 
 CREATE TABLE membership_type (
   type_id varchar(20) NOT NULL,
-  duration date NOT NULL,
+  duration int NOT NULL,
   amount decimal(10,2) NOT NULL,
   id varchar(20) NOT NULL ,
   trainer_id varchar(20) NOT NULL 
