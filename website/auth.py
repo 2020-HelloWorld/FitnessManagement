@@ -1,8 +1,11 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+from . import mydb
+mycursor = mydb.cursor()
+import json
 
 
 auth = Blueprint('auth', __name__)
@@ -19,7 +22,7 @@ def login():
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
-                return redirect(url_for('views.home'))
+                return redirect(url_for('views.statistics'))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
@@ -34,6 +37,17 @@ def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
+@auth.route('/delete_account')
+@login_required
+def delete_account():
+    mycursor.execute(f'DELETE FROM user_info WHERE id="{current_user.Userid}"')
+    print(mycursor)
+    mydb.commit()
+    id = current_user.id
+    logout_user()
+    User.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('auth.login'))
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
@@ -55,12 +69,21 @@ def sign_up():
         elif len(password1) < 7:
             flash('Password must be at least 7 characters.', category='error')
         else:
+            mycursor.execute('SELECT max(id) from user_info')
+            userID = "USR0"
+            for i in mycursor:
+                if i[0]==None:
+                    pass
+                else:
+                    userID = "USR"+str(int(i[0][-1])+1)
+            mycursor.execute(f'INSERT INTO user_info (id,fname,gender,height,weight) VALUES ("{userID}","{first_name}",3,0,0)')
+            mydb.commit()
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(
-                password1, method='sha256'))
+                password1,method='sha256'),Userid = userID)
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
             flash('Account created!', category='success')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.statistics'))
 
     return render_template("sign_up.html", user=current_user)
