@@ -11,7 +11,7 @@ mydb = mysql.connector.connect(
   host="localhost",
   user="gb",
   password="password",
-  database = "FIT_MNG"
+  database = "fitnessmanagement"
 )
 
 

@@ -69,13 +69,13 @@ def sign_up():
         elif len(password1) < 7:
             flash('Password must be at least 7 characters.', category='error')
         else:
-            mycursor.execute('SELECT max(id) from user_info')
+            mycursor.execute('SELECT count(id) from user_info')
             userID = "USR0"
             for i in mycursor:
                 if i[0]==None:
                     pass
                 else:
-                    userID = "USR"+str(int(i[0][-1])+1)
+                    userID = "USR"+str(int(i[0]))
             mycursor.execute(f'INSERT INTO user_info (id,fname,gender,height,weight) VALUES ("{userID}","{first_name}",3,0,0)')
             mydb.commit()
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(
