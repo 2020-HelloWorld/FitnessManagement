@@ -24,4 +24,9 @@ select fname from exercise_routine_fname where ex_routine_id="EX_routine52"and e
 
 select fname from exercise_routine_fname where ex_routine_id="EX_routine39"and exists (select fname from exercise_routine_fname where ex_routine_id="EX_routine29");
 
-select ex_id from exercise_routine where ex_routine_id="EX_routine52" union (select ex_id from exercise_routine where ex_routine_id="EX_routine93");
+(select ex_id from exercise_routine where ex_routine_id="EX_routine52") union (select ex_id from exercise_routine where ex_routine_id="EX_routine93");
+
+
+select count(u.id),t.trainer_id from user_info u,membership_type m,trainer t where u.id=m.id and t.trainer_id=m.trainer_id group by t.trainer_id;
+
+insert into membership_type values ("MEM6",3,5955.00,"USR79","TRAINER11");

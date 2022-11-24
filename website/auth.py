@@ -70,13 +70,14 @@ def sign_up():
             flash('Password must be at least 7 characters.', category='error')
         else:
             mycursor.execute('SELECT count(id) from user_info')
-            userID = "USR0"
+            userID = "USR(N)0"
             for i in mycursor:
                 if i[0]==None:
                     pass
                 else:
-                    userID = "USR"+str(int(i[0]))
+                    userID = "USR(N)"+str(int(i[0]))
             mycursor.execute(f'INSERT INTO user_info (id,fname,gender,height,weight) VALUES ("{userID}","{first_name}",3,0,0)')
+            mycursor.execute(f'INSERT INTO user_info_email VALUES ("{userID}","{email}")')
             mydb.commit()
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(
                 password1,method='sha256'),Userid = userID)

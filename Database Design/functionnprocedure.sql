@@ -1,12 +1,11 @@
 DELIMITER $$ ;
-CREATE FUNCTION correcting_gender(GENDER INT)
+CREATE FUNCTION correcting_gender(GENDER1 INT)
 RETURNS INT
 DETERMINISTIC 
 BEGIN
- 
    DECLARE gender INT;
-   SET gender = GENDER ;
-   IF gender > 1 THEN 
+   SET gender = GENDER1 ;
+   IF gender > 0 THEN 
    SET gender = 1;
    ELSE 
    SET gender = 0;

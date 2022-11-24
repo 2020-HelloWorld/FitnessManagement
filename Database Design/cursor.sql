@@ -7,7 +7,7 @@ BEGIN
 	DECLARE emailAddress varchar(100) DEFAULT "";
 
 
-	DEClARE curEmail 
+	DECLARE curEmail 
 		CURSOR FOR 
 			SELECT email FROM user_info_email;
 
