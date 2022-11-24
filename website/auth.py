@@ -75,7 +75,13 @@ def sign_up():
                 if i[0]==None:
                     pass
                 else:
+<<<<<<< HEAD
                     userID = "USR"+str(int(i[0]))
+=======
+                    print(i)
+                    userID = "USR"+str(int(i[0]))
+
+>>>>>>> 130a372a0c22984c7ea3a1cbdeece61f3be40d87
             mycursor.execute(f'INSERT INTO user_info (id,fname,gender,height,weight) VALUES ("{userID}","{first_name}",3,0,0)')
             mydb.commit()
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(
