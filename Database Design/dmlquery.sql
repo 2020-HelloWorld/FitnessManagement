@@ -30,3 +30,51 @@ select fname from exercise_routine_fname where ex_routine_id="EX_routine39"and e
 select count(u.id),t.trainer_id from user_info u,membership_type m,trainer t where u.id=m.id and t.trainer_id=m.trainer_id group by t.trainer_id;
 
 insert into membership_type values ("MEM6",3,5955.00,"USR79","TRAINER11");
+
+
+SELECT d.calories,r.calories,d.recipe 
+FROM exercise_routine as r, (
+    SELECT dp.calories,dpr.recipe,dp.ex_id
+    FROM diet_plan as dp,diet_plan_recipe as dpr
+    WHERE dp.recipe=dpr.recipe
+) as d 
+WHERE r.ex_routine_id = d.ex_id;
+
+
+SELECT u.id,u.fname,t.trainer_id,t.name,t.duration,t.type_id
+FROM user_info as u 
+JOIN (
+    SELECT m.id,m.duration,m.type_id,t.trainer_id,t.name 
+    FROM trainer as t 
+    JOIN 
+    membership_type as m 
+    WHERE 
+    t.trainer_id=m.trainer_id
+) as t
+WHERE u.id=t.id ;
+
+select avg(calories_burnt),avg(calories_consumed),avg(duration) from daily_log;
+
+SELECT  trainer_id from trainer
+EXCEPT (SELECT trainer_id from membership_type);
+
+CREATE view user_level as 
+SELECT u.fname,l.streaks,l.level 
+FROM user_info u,does d,exercise_routine r,daily_log dl,loyalty_pts l 
+WHERE d.id = u.id and d.ex_routine_id=r.ex_routine_id and r.ex_routine_id=dl.ex_routine_id and dl.loyalty_id=l.loyalty_id;
+
+SELECT t.name,m.amount 
+FROM membership_type m,trainer t
+WHERE m.trainer_id=t.trainer_id 
+AND m.amount< (
+    SELECT avg(amount) 
+    FROM membership_type
+);
+
+SELECT u.id,u.fname 
+FROM user_info u 
+WHERE EXISTS (
+    select * from does d,exercise_routine r,daily_log dl
+    WHERE d.id = u.id and d.ex_routine_id=r.ex_routine_id and r.ex_routine_id=dl.ex_routine_id 
+    AND ((dl.calories_burnt/dl.calories_consumed) > 0.3)
+);
